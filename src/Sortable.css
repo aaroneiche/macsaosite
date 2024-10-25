@@ -1,0 +1,52 @@
+
+.argPair {
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-right: 3px;
+}
+
+.argPair label {
+    margin-right: 2px;
+}
+
+.title {
+    color: white;
+}
+
+.byteFooter {
+    position: absolute;
+    bottom: 0px;
+    align-items: normal;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.byteFooter button {
+    padding:  2px 8px 2px 8px;
+    border-radius: 3px;
+    margin:2px;
+}
+
+.address {
+    font-size: 13px;
+    position: absolute;
+    top: -17px;
+    left: 2px;
+
+}
+
+.byteTextArea {
+    width: 102px;
+    height: 94px;
+    margin: 6px;
+}
+
+/* .byteFooter {
+    display: flex;
+    justify-content: space-between;
+    align-self: normal;
+} */
