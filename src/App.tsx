@@ -1,9 +1,7 @@
-import ByteBuilder from "./ByteBuilder";
+import Layout from "./Layout";
 
 export default function App() {
-
-
-    return(
-      <ByteBuilder />
+    return (
+        <Layout />
     );
 }

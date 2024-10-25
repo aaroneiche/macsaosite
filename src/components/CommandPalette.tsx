@@ -1,4 +1,4 @@
-import { byte, lookupTable } from "./commandBytes";
+import { byte, lookupTable } from "../commandBytes";
 
 
 //React.Dispatch<React.SetStateAction<byte[]>>) => React.ReactElement

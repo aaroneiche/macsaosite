@@ -19,10 +19,10 @@ import {
 
 import { CommandPalette } from "./CommandPalette";
 
-import './App.css';
+import '../App.css';
 import './Sortable.css';
 
-import {example} from './commandBytes';
+import {example} from '../commandBytes';
 
 import { SortableItem } from "./Sortable";
 
