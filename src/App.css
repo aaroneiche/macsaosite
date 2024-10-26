@@ -1,8 +1,9 @@
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* padding: 2rem; */
+  padding: 10px;
+  /* text-align: center; */
 }
 
 .logo {
@@ -42,7 +43,7 @@
 }
 
 .tile {
-  height: 180px;
+  height: 160px;
   width: 100px;
   margin: 16px 2px 2px 2px;
   border: solid black 1px;
@@ -79,10 +80,16 @@
   text-align: left !important;
 }
 
+#bytesOutput button{
+  width: unset;
+}
+
+#generatedBytes {
+  text-align: left;
+}
+
+
 #upperBlock {
-  position: absolute;
-  top: 10px;
-  left: 10px;
   display: flex;
   flex-direction: column;
   justify-content:flex-end
@@ -98,4 +105,18 @@
     ". . . . ."
     ". . . . ."
     ". . . . .";
+}
+
+button.selected {
+  border-color: grey;
+}
+
+
+#intro.window-pane p{
+  text-align: left;
+}
+
+pre.code {
+  text-align: left;
+  margin-left: 20px;
 }

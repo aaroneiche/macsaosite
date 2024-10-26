@@ -12,7 +12,12 @@
     margin-right: 2px;
 }
 
-.title {
+.argPair input {
+    height: 11px;
+    width: 17px;
+}
+
+.tile .title {
     color: white;
 }
 
@@ -40,13 +45,8 @@
 }
 
 .byteTextArea {
-    width: 102px;
+    width: 82px;
     height: 94px;
     margin: 6px;
 }
 
-/* .byteFooter {
-    display: flex;
-    justify-content: space-between;
-    align-self: normal;
-} */

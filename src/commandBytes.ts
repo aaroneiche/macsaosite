@@ -47,7 +47,7 @@ const textArgBytes = (val: string) => {
 
 
 export const example: byte[] = [
-    /*
+    
     {
         id: 1,
         command: 1,
@@ -62,6 +62,15 @@ export const example: byte[] = [
     },
     {
         id: 3,
+        command: 16,
+        name: "MouseTo",
+        args: [
+            {arg:'x',val:"34"},
+            {arg:'y',val:"38"}
+        ]
+    },
+    {
+        id: 4,
         command: 22,
         name: "Mouse To Menu",
         args: [
@@ -70,21 +79,12 @@ export const example: byte[] = [
         ]
     },    
     {
-        id: 4,
-        command: 16,
-        name: "MouseTo",
-        args: [
-            {arg:'x',val:"34"},
-            {arg:'y',val:"38"}
-        ]
-    },
-    */
-    {
         id: 5,
         command: 255,
         name: "Action End",
         args: []
     },
+    /*     
     {
         id: 6,
         command: 19,
@@ -93,7 +93,7 @@ export const example: byte[] = [
         value: "",
         out: textArgBytes,
 
-    },
+    }, */
 ]
 
 export const lookupTable: {[key:number]: lookupByte} = {

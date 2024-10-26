@@ -32,7 +32,7 @@ export function SortableItem(props: SortableItemProps ) {
           <label htmlFor="">{a.arg}</label>
           <input
             type="text"
-            size={2}
+            // size={2}
             value={a.val}
             onChange={(e) => {
               updateArg(props.id, a.arg, e.target.value);
