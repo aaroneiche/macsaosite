@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   DndContext,
   closestCenter,
@@ -22,18 +22,17 @@ import { CommandPalette } from "./CommandPalette";
 import '../App.css';
 import './Sortable.css';
 
-import {example} from '../commandBytes';
-
 import { SortableItem } from "./Sortable";
+import { BytesContext } from "../App";
 
 function ByteBuilder() {
-  const [bytes, setBytes] = useState(example);
+  // const [bytes, setBytes] = useState(example);
+  const {bytes, setBytes} = useContext(BytesContext);
 
   const [bytesToSend, setBytesToSend] = useState<string[]>([]);
 
   const [addressInput, setAddressInput] = useState("0010");
   const [baseAddress, setBaseAddress] = useState<number>(16);
-  // const [addressCounter, setAddressCounter] = useState<number>(0);
 
   const sensors = useSensors(
     useSensor(PointerSensor),

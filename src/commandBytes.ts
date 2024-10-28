@@ -99,8 +99,8 @@ export const example: byte[] = [
 export const lookupTable: {[key:number]: lookupByte} = {
         1: {
             name: "Desktop",
-            desc: "Macintosh Desktop",
-            args: [],
+            desc: "Macintosh Desktop with a menu, a system disk icon, and the Trash",
+            args: ['disk'],
             type: "background",
         },
         2: {
@@ -121,6 +121,43 @@ export const lookupTable: {[key:number]: lookupByte} = {
             args: ['x','y','width','height','scrollbars'],
 
         },
+        9: {
+            name: "Draw Pixel",
+            desc: "Draw a Pixel at x,y coordinates, with color",
+            args: ['x','y','color'],
+        },
+        10: {
+            name: "Draw Horizontal line",
+            desc: "Draw a horizontal line from x,y for length with color",
+            args: ['x','y','length', 'color'],
+        },
+        11: {
+            name: "Draw vertical line",
+            desc: "Draw a vertical line from x,y for length with color",
+            args: ['x','y','length', 'color'],
+        },
+        12: {
+            name: "Draw Filled Rectangle",
+            desc: "Draw a filled Rectangle with color",
+            args: ['x','y','width','height', 'color'],
+        },
+        13: {
+            name: "Draw Rectangle",
+            desc: "Draw a Rectangle with color (not filled)",
+            args: ['x','y','width','height', 'color'],
+        },
+        14: {
+            name: "Draw Filled Circle",
+            desc: "Draw a filled Circle with color",
+            args: ['x','y','radius', 'color'],
+        },
+        15: {
+            name: "Draw Circle",
+            desc: "Draw a Circle with color (not filled)",
+            args: ['x','y','radius', 'color'],
+        },
+
+
         16: {
             name: "Move Mouse",
             desc: "animates mouse to an X/Y",
@@ -133,14 +170,14 @@ export const lookupTable: {[key:number]: lookupByte} = {
         },
         19: {
             name: "Put Text",
-            desc: "Places text characters",
+            desc: "Places text characters. ASCII coded bytes - terminated by a 0. ",
             args: textArgEdit,
             value: "",
             out: textArgBytes
         },
         20: {
             name: "Type Text",
-            desc: "Types text characters out",
+            desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0.",
             args: textArgEdit,
             value: "",
             out: textArgBytes
@@ -148,18 +185,18 @@ export const lookupTable: {[key:number]: lookupByte} = {
         },        
         21: {
             name: "Clear Buffer",
-            desc: "Clears MacPaint Buffer. color arg is 1 for white, 0 for black",
+            desc: "Clears MacPaint Buffer. Color arg is 1 for white, 0 for black",
             args: ["color"],
             value: "",
         },
         22: {
             name: "Mouse To Menu",
-            desc: "Moves the mouse to a menu, and then to an Item",
+            desc: "Moves the mouse to a menu, and then to an Item. Menu gets appropriately highlighted.",
             args: ["Menu","Menu Item"],
         },
         254: {
             name: "BG End",
-            desc: "The end of a background block",
+            desc: "The end of a background block. ",
             args: [],
         },
         255: {

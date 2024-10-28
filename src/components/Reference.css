@@ -1,0 +1,7 @@
+.window th, .window td {
+    text-align: left;
+}
+
+.argsTitle {
+    vertical-align: top;
+}
