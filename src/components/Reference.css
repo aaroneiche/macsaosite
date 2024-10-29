@@ -2,6 +2,19 @@
     text-align: left;
 }
 
+/* #page .window {
+    transform: scale(0.8);
+} */
+
 .argsTitle {
+    vertical-align: top;
+}
+
+#toc a {
+    display:block;
+}
+
+#toc table td,th {
+    padding: 10px;
     vertical-align: top;
 }

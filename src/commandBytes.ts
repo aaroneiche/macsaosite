@@ -1,6 +1,6 @@
 import React from "react";
 
-type byteType = "background"|"action";
+type byteType = "background"|"action"|"control";
 
 export type byte = {
     id: number;
@@ -206,4 +206,37 @@ export const lookupTable: {[key:number]: lookupByte} = {
         }
     };
 
+
+export const controlTable: {[key: number]: lookupByte} = {
+    1: {
+            name: "Write to Display Buffer",
+            desc: "Writes the provided bytes to the display buffer and starts playback from beginning. Automatically appends a 255 at the end (for end of playback)",
+            args: [],
+            type: "control",
+        },
+    2: {
+            name: "Write to EEPROM",
+            desc: "Writes the provided bytes to the EEPROM at the provided address.",
+            args: ["Address High","Address Low"],
+            type: "control",
+        },        
+    3: {
+            name: "Read bytes",
+            desc: "Reads n bytes from the EEPROM at the provided address, Or from the display buffer by sending 0xFFFF",
+            args: ["Address High","Address Low", "Number of bytes"],
+            type: "control",
+        },                
+    4: {
+            name: "Load Animation Sequence from EEPROM",
+            desc: "Loads n bytes from the EEPROM at address into the display buffer. Automatically appends a 255 at end for end-of-playback",
+            args: ["Address High","Address Low", "Number of bytes"],
+            type: "control",
+        },        
+    5: {
+            name: "Set a variable",
+            desc: "Sets a variable value. 1: Mode (0 is animation, 1 is live drive). 2: Mouse Coordinates (X and Y) ",
+            args: [],
+            type: "control",
+        },        
+}
 

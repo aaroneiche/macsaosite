@@ -17,6 +17,8 @@ import {
   
 } from "@dnd-kit/sortable";
 
+// import { BytesContext } from "../App";
+
 import { CommandPalette } from "./CommandPalette";
 
 import '../App.css';
@@ -42,7 +44,7 @@ function ByteBuilder() {
   );
  
   const clearBytes = ()=>{
-    setBytes([]);
+    setBytes!([]);
   };
 
   const generateBytes = () => {
@@ -105,7 +107,7 @@ function ByteBuilder() {
       args={b.args}
       currentAddress={getAddressForByte(i)}
       bytes={bytes} //In case you want to mess with the object directly.
-      setBytes={setBytes}
+      setBytes={setBytes!}
     />
     );
   });
@@ -193,7 +195,7 @@ function ByteBuilder() {
 
       <br />
 
-      <CommandPalette bytes={bytes} setBytes={setBytes} />
+      <CommandPalette bytes={bytes} setBytes={setBytes!} />
       <button onClick={clearBytes}>Clear Bytes</button>
     </div>
   );
@@ -210,7 +212,7 @@ function ByteBuilder() {
       const movedByte = newBytesOrder.splice(newBytesOrder.findIndex(k=>k.id==active.id),1);
       newBytesOrder.splice(destination,0, movedByte[0]);
       
-      setBytes(newBytesOrder);
+      setBytes!(newBytesOrder);
 
     }
   }
