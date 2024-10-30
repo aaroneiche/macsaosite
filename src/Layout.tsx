@@ -1,13 +1,14 @@
 import { useState } from "react";
-import {ByteBuilder, Intro, Reference} from "./components";
+import {About, ByteBuilder, Intro, Reference} from "./components";
 import Navigation from "./components/Navigation";
 
-export type page = "intro" | "reference" | "bytebuilder";
+export type page = "about" | "intro" | "reference" | "bytebuilder";
 
 export default function Layout() { //props: {children: React.ReactNode}
 
-    const [currentPage, setCurrentPage] = useState<page>("intro"); 
+    const [currentPage, setCurrentPage] = useState<page>("about"); 
     const pages: Record<page,React.ReactNode> = {
+        about: <About />,
         intro: <Intro />,
         bytebuilder: <ByteBuilder />,
         reference: <Reference/>

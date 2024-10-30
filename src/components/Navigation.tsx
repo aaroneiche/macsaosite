@@ -6,9 +6,30 @@ export default function Navigation(props: {
 }) {
   return (
     <div>
-      <button className={(props.currentPage === 'intro')? 'selected':''} onClick={() => props.setPage("intro")}>Getting Started</button>
-      <button className={(props.currentPage === 'bytebuilder')? 'selected':''}  onClick={() => props.setPage("bytebuilder")}>Byte Builder</button>
-      <button className={(props.currentPage === 'reference')? 'selected':''}  onClick={() => props.setPage("reference")}>Reference</button>
+      <button
+        className={props.currentPage === "about" ? "selected" : ""}
+        onClick={() => props.setPage("about")}
+      >
+        About
+      </button>
+      <button
+        className={props.currentPage === "intro" ? "selected" : ""}
+        onClick={() => props.setPage("intro")}
+      >
+        Getting Started
+      </button>
+      <button
+        className={props.currentPage === "bytebuilder" ? "selected" : ""}
+        onClick={() => props.setPage("bytebuilder")}
+      >
+        Byte Builder
+      </button>
+      <button
+        className={props.currentPage === "reference" ? "selected" : ""}
+        onClick={() => props.setPage("reference")}
+      >
+        Reference
+      </button>
     </div>
   );
 }

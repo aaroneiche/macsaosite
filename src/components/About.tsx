@@ -1,7 +1,7 @@
 import Markdown from "react-markdown";
-import intro from "../assets/intro.md"
+import about from "../assets/about.md";
 
-export default function Intro() {
+export default function About() {
   return (
     <div className="window">
       <div className="title-bar">
@@ -12,9 +12,7 @@ export default function Intro() {
       <div className="separator"></div>
 
       <div className="window-pane" id="intro">
-        <Markdown>
-            {intro}
-        </Markdown>
+        <Markdown>{about}</Markdown>
       </div>
     </div>
   );

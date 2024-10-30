@@ -173,7 +173,7 @@ function ByteBuilder() {
       <div className="window">
         <div className="title-bar">
           <button aria-label="Close" className="close"></button>
-          <h1 className="title">Window With Stuff</h1>
+          <h1 className="title">Byte Builder</h1>
           <button aria-label="Resize" className="resize"></button>
         </div>
         <div className="separator"></div>
