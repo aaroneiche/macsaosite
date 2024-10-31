@@ -75,12 +75,8 @@ export function Reference() {
         <div id="toc">
           <table>
             <tr>
-              <th>
-                Drawing
-              </th>
-              <th>
-                Control
-              </th>
+              <th>Drawing</th>
+              <th>Control</th>
             </tr>
 
             <tr>
@@ -95,6 +91,43 @@ export function Reference() {
         <hr />
         <h2>Control commands</h2>
         {controlRefSet}
+        <h2>Settings Key:</h2>
+
+        <div className="window" id="settings">
+          <div className="title-bar">
+            <button aria-label="Close" className="close"></button>
+            <h1 className="title">Settings Key</h1>
+            <button aria-label="Resize" className="resize"></button>
+          </div>
+          <div className="separator"></div>
+
+          <div className="window-pane">
+            <p>
+              The first 16 bytes of the EEPROM are reserved for settings. Please
+              do not write to them
+            </p>
+            <table border={1} cellPadding="10px">
+              <tr>
+                <th>0x0000</th>
+                <th>0x0001</th>
+                <th>0x0002</th>
+                <th>0x0003</th>
+              </tr>
+              <tr>
+                <td>Selected I2C address</td>
+                <td>Sequence Address High Byte</td>
+                <td>Sequence Address Low Byte</td>
+                <td>Sequence Length</td>
+              </tr>
+              <tr>
+                <td><i>defaults to 10(0x0A)</i></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </>
     );
 

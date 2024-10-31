@@ -210,13 +210,13 @@ export const lookupTable: {[key:number]: lookupByte} = {
 export const controlTable: {[key: number]: lookupByte} = {
     1: {
             name: "Write to Display Buffer",
-            desc: "Writes the provided bytes to the display buffer and starts playback from beginning. Automatically appends a 255 at the end (for end of playback)",
-            args: [],
+            desc: "Writes the provided bytes to the display buffer and starts playback from beginning. The display buffer has a maximum length of 255",
+            args: ['Position Offset'],
             type: "control",
         },
     2: {
             name: "Write to EEPROM",
-            desc: "Writes the provided bytes to the EEPROM at the provided address.",
+            desc: "Writes the provided bytes to the EEPROM at the provided address. Max 32 bytes at a time (including control, high and low address)",
             args: ["Address High","Address Low"],
             type: "control",
         },        
@@ -238,5 +238,11 @@ export const controlTable: {[key: number]: lookupByte} = {
             args: [],
             type: "control",
         },        
+    6: {
+        name: "Read a variable",
+        desc: "Puts variable value in i2c register to read. Immediately read to get data. Ids are:  1: Mode (1 byte). 2: Mouse Coordinates (2 bytes) ",
+        args: ['variable id '],
+        type: "control",
+    },        
 }
 

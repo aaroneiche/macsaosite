@@ -15,8 +15,6 @@ There are two primary modes of operation for the MacSAO: *Animation*, and *Live-
 The Animation mode is intended largely as a passive-mode, something for the Mac to Display for fun. 
 The Live-Drive mode is intended largely for interactivity. Changing the display on-demand to some changing data from another source. 
 
-
-
 ## Animation Mode
 
 ### Drawing to the MacSAO.  
@@ -25,6 +23,7 @@ The MacSAO was designed to allow users to make their own animation sequences. I'
 
 ``` 
     1      // Display the desktop
+    0      // The offset of the display stack to write to
     1      // Disk Unselected
     254    // End of Background
 
@@ -47,7 +46,7 @@ A sequence of commands needs, at minimum:
 You can provide as many background drawing commands as you'd like. They are all executed before the action.
 You can provide as many action commands as you'd like. Some take time to execute (such as moving the mouse). Once an action has completed, the interpreter moves onto the next action in the sequence.
 
-Once the interpreter sees a 255, it will move onto the next sequence - another set of  background and action commands. Once the interpreter cannot find anymore commands, it will start at the beginning.
+Once the interpreter sees a 255, it will move onto the next sequence - another set of  background and action commands. Once the interpreter cannot find anymore commands (a second `255` following the `255` at the end of an action), it will go start back at the beginning.
 
 ### Getting sequences on the MacSAO
 
@@ -70,6 +69,7 @@ This example shows how to send a short sequence to the first possible address (s
 
     1    // draw Desktop
     254  // END of background
+
     16   // Mouse to
     5    // x = 5
     5    // y = 5
@@ -77,10 +77,12 @@ This example shows how to send a short sequence to the first possible address (s
 
     1    // draw Desktop
     254  // END of background
+
     16   // Mouse to
     50   // x = 50
     45   // y = 45
     255  // END of Action
+    255  // END of Sequence.
 ```
 
 If your sequence was too large to send in a single command, you could write a second command to write additional sequence data. Alternatively you can store multiple sequences in the EEPROM and load difference sequences at will.
