@@ -27,7 +27,7 @@ jobs:
     - name: Generate filelist.txt
       run: |
         # Create filelist.txt with all files in the build directory
-        find build -type f > filelist.txt
+        find dist -type f > filelist.txt
         cat filelist.txt  # This prints out the contents of the file to the logs for verification
 
     - name: Upload files via FTPES using filelist.txt
