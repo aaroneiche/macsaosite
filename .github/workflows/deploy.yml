@@ -56,4 +56,4 @@ jobs:
         set ftp:passive-mode yes;  # Enable passive mode
         set xfer:log 1;
         mirror -R dist/ .; 
-        quit" ftps://$FTPES_HOST
+        quit" ftp://$FTPES_HOST
