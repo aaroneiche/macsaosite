@@ -24,11 +24,11 @@ jobs:
     - name: Build project
       run: npm run build  # Replace with your actual build command
 
-    - name: Generate filelist.txt
-      run: |
-        # Create filelist.txt with all files in the build directory
-        find dist -type f > filelist.txt
-        cat filelist.txt  # This prints out the contents of the file to the logs for verification
+    # - name: Generate filelist.txt
+    #   run: |
+    #     # Create filelist.txt with all files in the build directory
+    #     find dist -type f > filelist.txt
+    #     cat filelist.txt  # This prints out the contents of the file to the logs for verification
 
     # - name: Upload files via FTPES using filelist.txt
     #   env:
@@ -50,4 +50,7 @@ jobs:
         FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
         FTPES_PASSWORD: ${{ secrets.FTPS_PASSWORD }}
       run: |
-        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; mirror -R dist/ .; quit" ftps://$FTPES_HOST
+        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; 
+        set net:timeout 120;  # Set a timeout of 120 seconds
+        set net:reconnect-interval-base 5;  # Retry interval for reconnecting
+        mirror -R dist/ .; quit" ftps://$FTPES_HOST
