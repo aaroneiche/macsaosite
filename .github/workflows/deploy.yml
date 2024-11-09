@@ -37,4 +37,4 @@ jobs:
         FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
       run: |
         # Upload files listed in filelist.txt using curl
-        curl -T "$(cat filelist.txt)" --ftp-ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST:2100/path/to/deploy/
+        curl -T "$(paste -sd ' ' filelist.txt)" --ftp-ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST:2100/path/to/deploy/
