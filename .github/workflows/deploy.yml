@@ -50,4 +50,4 @@ jobs:
         FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
         FTPES_PASSWORD: ${{ secrets.FTPS_PASSWORD }}
       run: |
-        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; mirror -R dist/ .; quit" ftp://$FTPES_HOST
+        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; mirror -R dist/ .; quit" ftps://$FTPES_HOST
