@@ -30,14 +30,24 @@ jobs:
         find dist -type f > filelist.txt
         cat filelist.txt  # This prints out the contents of the file to the logs for verification
 
-    - name: Upload files via FTPES using filelist.txt
+    # - name: Upload files via FTPES using filelist.txt
+    #   env:
+    #     FTPES_HOST: ${{ secrets.FTPES_HOST }}
+    #     FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
+    #     FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
+    #   run: |
+    #     # Upload files listed in filelist.txt using curl
+    #     for file in $(cat filelist.txt); do
+    #         curl -T "$file" --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST
+    #         done
+
+    - name: Install lftp
+      run: sudo apt-get install -y lftp
+
+    - name: Upload files via FTPES using lftp
       env:
         FTPES_HOST: ${{ secrets.FTPES_HOST }}
         FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
-        FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
+        FTPES_PASSWORD: ${{ secrets.FTPS_PASSWORD }}
       run: |
-        # Upload files listed in filelist.txt using curl
-        for file in $(cat filelist.txt); do
-            curl -T "$file" --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST
-            done
-
+        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; mirror -R build/ /; quit" ftp://$FTPES_HOST
