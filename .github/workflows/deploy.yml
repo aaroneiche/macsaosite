@@ -53,5 +53,7 @@ jobs:
         lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; 
         set net:timeout 120;  # Set a timeout of 120 seconds
         set net:reconnect-interval-base 5;  # Retry interval for reconnecting
+        set ftp:passive-mode yes;  # Enable passive mode
+        set xfer:log 1;
         mirror -R dist/ .; 
         quit" ftps://$FTPES_HOST
