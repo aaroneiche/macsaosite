@@ -1,9 +1,14 @@
+## Pictures on a screen
+
+The MacSAO uses data in an array of bytes to draw images on its display. The array bytes are referred to as the **Display Stack**. You can add data to the display stack to display different pictures, and make the MacSAO act like a computer. 
+
+
 ## Communicating with the MacSAO
 The MacSAO's primary interface is a standard two-wire I2C. The default address is **10** (0x0A) for writing (*11* for reading). Two alternative addresses are available: **34** (0x22) and **86** (0x56). To change the I2C address, press and hold down the button on the bottom of the MacSAO for approximately 3 seconds. The display will change to a setting screen where you can select the desired address. Pressing the button will step through the options. When you've selected your preference, press and hold the button again for 3 seconds and it will save that value and return you to the previous mode. 
 
 Messages are sent to the SAO typically with 3 parts: A **control byte**, a (drawing) **command**, and **arguments** for that command. 
 
-The **control byte** tells the Mac what to do with this data. Write to the display buffer, to the EEPROM, read data etc. 
+The **control byte** tells the Mac what to do with this data. Write to the display stack, to the EEPROM, read data etc. 
 
 The **command** (most often for drawing to the screen) tells the Mac what to display on the screen. Some commands are very simple: Draw a rectangle *(13)*. Other commands such as MacWrite *(3)* draw quite a lot on the display. In both cases, the commands are a single byte.
 
@@ -109,9 +114,9 @@ Setting the SAO into LiveDrive mode is accomplished by sending control byte `5`,
 
 ### Setting a background in LiveDrive
 
-The background in LiveDrive mode is set by writing draw commands to the display buffer. 
+The background in LiveDrive mode is set by writing draw commands to the display stack. 
 ```
-    1    // Control byte - write to display buffer
+    1    // Control byte - write to display stack
     1    // Desktop
     1    // arg: Unselected Disk (on desktop)
     254  // END of background

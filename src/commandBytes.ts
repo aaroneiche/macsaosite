@@ -209,8 +209,8 @@ export const lookupTable: {[key:number]: lookupByte} = {
 
 export const controlTable: {[key: number]: lookupByte} = {
     1: {
-            name: "Write to Display Buffer",
-            desc: "Writes the provided bytes to the display buffer and starts playback from beginning. The display buffer has a maximum length of 255",
+            name: "Write to Display Stack",
+            desc: "Writes the provided bytes to the display stack and starts playback from beginning. The display stack has a maximum length of 255",
             args: ['Position Offset'],
             type: "control",
         },
@@ -222,14 +222,14 @@ export const controlTable: {[key: number]: lookupByte} = {
         },        
     3: {
             name: "Read bytes",
-            desc: "Reads n bytes from the EEPROM at the provided address, Or from the display buffer by sending 0xFFFF",
+            desc: "Reads n bytes from the EEPROM at the provided address, Or from the display stack by sending 0xFFFF",
             args: ["Address High","Address Low", "Number of bytes"],
             type: "control",
         },                
     4: {
             name: "Load Animation Sequence from EEPROM",
-            desc: "Loads n bytes from the EEPROM at address into the display buffer. Automatically appends a 255 at end for end-of-playback",
-            args: ["Address High","Address Low", "Number of bytes"],
+            desc: "Loads n bytes from the EEPROM at address into the display buffer. Automatically appends a 255 at end for end-of-playback. Display offset provides position of first byte in display stack",
+            args: ["Address High","Address Low", "Number of bytes","Display Offset"],
             type: "control",
         },        
     5: {
