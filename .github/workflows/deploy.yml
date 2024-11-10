@@ -39,9 +39,9 @@ jobs:
           remote_dir="${dir#dist/}"
           
           # Create the directory on the FTP server if it doesn't exist
-          curl --ftp-ssl --user $FTPES_USERNAME:$FTPES_PASSWORD -Q "MKD $remote_dir" ftp://$FTPES_HOST
+          curl --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD -Q "MKD $remote_dir" ftp://$FTPES_HOST
           
           # Upload the file to the correct remote directory
-          curl -T "$file" --ftp-ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST$remote_dir/$(basename "$file")
+          curl -T "$file" --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST/$remote_dir/$(basename "$file")
         done
 
