@@ -24,34 +24,24 @@ jobs:
     - name: Build project
       run: npm run build  # Replace with your actual build command
 
-    # - name: Generate filelist.txt
-    #   run: |
-    #     # Create filelist.txt with all files in the build directory
-    #     find dist -type f > filelist.txt
-    #     cat filelist.txt  # This prints out the contents of the file to the logs for verification
-
-    # - name: Upload files via FTPES using filelist.txt
-    #   env:
-    #     FTPES_HOST: ${{ secrets.FTPES_HOST }}
-    #     FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
-    #     FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
-    #   run: |
-    #     # Upload files listed in filelist.txt using curl
-    #     for file in $(cat filelist.txt); do
-    #         curl -T "$file" --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST
-    #         done
-
-    - name: Install lftp
-      run: sudo apt-get install -y lftp
-
-    - name: Upload files via FTPES using lftp
+    - name: Upload files via FTPES with recursive directory creation and curl
       env:
         FTPES_HOST: ${{ secrets.FTPES_HOST }}
         FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
-        FTPES_PASSWORD: ${{ secrets.FTPS_PASSWORD }}
+        FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
       run: |
-        lftp -u $FTPES_USERNAME,$FTPES_PASSWORD -e "set ftp:ssl-allow yes; 
-        set xfer:log 1;
-        mirror -R dist/ .; 
-        quit" 
-        ftp://$FTPES_HOST
+        # Traverse the build directory and handle recursive directory creation and file upload
+        find dist -type f | while read file; do
+          # Extract the directory part of the file path
+          dir=$(dirname "$file")
+          
+          # Convert the local directory path to the FTP path
+          remote_dir="${dir#dist/}"
+          
+          # Create the directory on the FTP server if it doesn't exist
+          curl --ftp-ssl --user $FTPES_USERNAME:$FTPES_PASSWORD -Q "MKD $remote_dir" ftp://$FTPES_HOST
+          
+          # Upload the file to the correct remote directory
+          curl -T "$file" --ftp-ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST$remote_dir/$(basename "$file")
+        done
+
