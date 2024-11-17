@@ -27,13 +27,15 @@ The Live-Drive mode is intended largely for interactivity. Changing the display 
 The MacSAO was designed to allow users to make their own animation sequences. I've tried to make this as straightforward as possible. Sequences are a series of 8bit bytes, containing drawing instructions or commands. A simple sequence looks like this: 
 
 ``` 
-    1      // Display the desktop
+    1      // Write directly to the Display Stack 
     0      // The offset of the display stack to write to
-    1      // Disk Unselected
+    
+    1      // Display the desktop with Disk Unselected (1)
+    1      // 
     254    // End of Background
 
     16     // Move Mouse to (45,10)
-    45
+    45     
     10
 
     16     // Move Mouse to (10,10)
@@ -44,7 +46,7 @@ The MacSAO was designed to allow users to make their own animation sequences. I'
 ```
 This sequence will draw the desktop, and then animate the mouse going from its current position to the X,Y coordinates 45,10. Then it will animate the mouse going to X,Y coordinates 10,10 (from the last mouse coordinates, at 45,10)
 
-A sequence of commands needs, at minimum:
+An animation sequence of commands needs, at minimum:
 1) A Background command, with a `254` at the end
 2) An Action command, with a `255` at the end
 
@@ -73,6 +75,7 @@ This example shows how to send a short sequence to the first possible address (s
     16   // Address low byte
 
     1    // draw Desktop
+    1    // with the system disk unselected
     254  // END of background
 
     16   // Mouse to
@@ -81,6 +84,7 @@ This example shows how to send a short sequence to the first possible address (s
     255  // END of Action
 
     1    // draw Desktop
+    1    // with the system disk unselected
     254  // END of background
 
     16   // Mouse to
