@@ -23,6 +23,7 @@ export type lookupByte = {
     type?: byteType;
     value?:string;
     out?: ((val: string) => number[]);
+    image?: string;
 }
 
 
@@ -102,24 +103,33 @@ export const lookupTable: {[key:number]: lookupByte} = {
             desc: "Macintosh Desktop with a menu, a system disk icon, and the Trash",
             args: ['disk'],
             type: "background",
+            image: "desktop.png"
         },
         2: {
             name: "MacPaint",
             desc: "The MacPaint app",
             args: ['tool'],
             type: "background",
+            image: "macpaint.png"
         },
         3: {
             name: "MacWrite",
             desc: "The MacWrite app",
             args: [],
             type: "background",
+            image: "macwrite.png"
         },
         5: {
             name: "Window",
             desc: "A window",
             args: ['x','y','width','height','scrollbars'],
-
+            image: "window.png"
+        },
+        6: {
+            name: "Menu",
+            desc: "The menu bar, and optional selected menu & item (-1 for unselected)",
+            args: ['Selected Menu','Selected Item'],
+            image: "menu.png"
         },
         9: {
             name: "Draw Pixel",

@@ -1,6 +1,7 @@
 // import Markdown from "react-markdown";
 // import reference from "../../public/reference.md";
 // import remarkGfm from "remark-gfm";
+
 import { lookupTable, lookupByte, controlTable } from "../commandBytes"
 import "./Reference.css"
 
@@ -8,8 +9,16 @@ function ReferenceBlock(command: number, byteInfo: lookupByte) {
     
     const theseArgs = (typeof byteInfo.args !== 'function') ? byteInfo.args.map(a=>{return <div>{a}</div>}) : "It's complicated";
 
+
+    // import thisImage from byteInfo.image;
+
+
     return (
-        <div className="window" id={byteInfo.name.replace(" ","_")}>
+      <div
+        className="window"
+        id={byteInfo.name.replace(" ", "_")}
+        key={byteInfo.name.replace(" ", "_")}
+      >
         <div className="title-bar">
           <button aria-label="Close" className="close"></button>
           <h1 className="title">{byteInfo.name}</h1>
@@ -17,53 +26,67 @@ function ReferenceBlock(command: number, byteInfo: lookupByte) {
         </div>
         <div className="separator"></div>
 
-        <div className="window-pane">
-            <table>
-                <tr>
-                    <th>Byte</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>{command}</td>
-                    <td>{byteInfo.desc}</td>   
-                </tr>    
-                <tr><td>&nbsp;</td></tr>
-                <tr>
-                    {byteInfo.args.length > 0 &&
-                        <>
-                        <td className="argsTitle"> <b>Args:</b>  </td>
-                        <td> {theseArgs} </td>
-                        </>
-                    }
-                    
-                </tr>
-            </table>    
+        <div className={["window-pane", "reference-block"].join(" ")}>
+          <table>
+            <thead>
+              <tr>
+                <th>Byte</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{command}</td>
+                <td>{byteInfo.desc}</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                {byteInfo.args.length > 0 && (
+                  <>
+                    <td className="argsTitle">
+                      {" "}
+                      <b>Args:</b>{" "}
+                    </td>
+                    <td> {theseArgs} </td>
+                  </>
+                )}
+              </tr>
+            </tbody>
+          </table>
+          {byteInfo.image !== undefined && (
+            <img src={`public/${byteInfo.image}`} style={{ height: "100px" }} />
+          )}
         </div>
       </div>
-    )
+    );
 }
 
 
 
 export function Reference() {
 
+    // Drawing commands Table of contents
     const toc = Object.keys(lookupTable).map((k) => (
       <a href={"#" + lookupTable[Number(k)].name.replace(" ", "_")}>
         {lookupTable[Number(k)].name}
       </a>
     ));
 
+    // Control Commands Table of contents
     const controltoc = Object.keys(controlTable).map((k) => (
         <a href={"#" + controlTable[Number(k)].name.replace(" ", "_")}>
         {controlTable[Number(k)].name}
         </a>
     ));
 
+    // Reference blocks
     const refSet = Object.keys(lookupTable).map(k=>{
         return ReferenceBlock(Number(k), lookupTable[Number(k)]);
     });
 
-
+    // Control blocks
     const controlRefSet = Object.keys(controlTable).map((k) => {
         return ReferenceBlock(Number(k), controlTable[Number(k)]);
     });
