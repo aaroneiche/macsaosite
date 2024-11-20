@@ -126,8 +126,8 @@ export function Reference() {
 
           <div className="window-pane">
             <p>
-              The first 16 bytes of the EEPROM are reserved for settings. Please
-              do not write to them
+              The first 16 bytes of the EEPROM are reserved for settings. 
+              Avoid writing to them directly.
             </p>
             <table border={1} cellPadding="10px">
               <tr>
@@ -135,15 +135,22 @@ export function Reference() {
                 <th>0x0001</th>
                 <th>0x0002</th>
                 <th>0x0003</th>
+                <th>0x0004-000F</th>
               </tr>
               <tr>
                 <td>Selected I2C address</td>
                 <td>Sequence Address High Byte</td>
                 <td>Sequence Address Low Byte</td>
                 <td>Sequence Length</td>
+                <td>
+                  <i>currently not used</i>
+                </td>
               </tr>
               <tr>
-                <td><i>defaults to 10(0x0A)</i></td>
+                <td>
+                  <i>defaults to 10(0x0A)</i>
+                </td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

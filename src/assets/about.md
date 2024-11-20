@@ -33,6 +33,8 @@ This project would not have been possible without a lot of libraries, examples, 
 
 > Tom Nardi of Hackaday - whose Cyberdeck SAO from 2023 inspired me to make my own SAO. 
 
+> Sakun Archarige - who put together the [*system.css*](https://sakofchit.github.io/system.css/) that this website uses.
+
 > Any number of folks on the Hackaday and CN
 
 > My wonderful wife, Hykel - who was supportive and told me it was cool even when I'm pretty confident she thinks its just silly. 

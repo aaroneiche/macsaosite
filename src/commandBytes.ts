@@ -140,31 +140,37 @@ export const lookupTable: {[key:number]: lookupByte} = {
             name: "Draw Horizontal line",
             desc: "Draw a horizontal line from x,y for length with color",
             args: ['x','y','length', 'color'],
+            image: "horizontal.png"
         },
         11: {
             name: "Draw vertical line",
             desc: "Draw a vertical line from x,y for length with color",
             args: ['x','y','length', 'color'],
+            image: "vertical.png"            
         },
         12: {
             name: "Draw Filled Rectangle",
             desc: "Draw a filled Rectangle with color",
             args: ['x','y','width','height', 'color'],
+            image: "fillRect.png"
         },
         13: {
             name: "Draw Rectangle",
             desc: "Draw a Rectangle with color (not filled)",
             args: ['x','y','width','height', 'color'],
+            image: "rect.png"
         },
         14: {
             name: "Draw Filled Circle",
             desc: "Draw a filled Circle with color",
             args: ['x','y','radius', 'color'],
+            image: "fillCircle.png"
         },
         15: {
             name: "Draw Circle",
             desc: "Draw a Circle with color (not filled)",
             args: ['x','y','radius', 'color'],
+            image: "circle.png"
         },
 
 
@@ -183,14 +189,16 @@ export const lookupTable: {[key:number]: lookupByte} = {
             desc: "Places text characters. ASCII coded bytes - terminated by a 0. ",
             args: textArgEdit,
             value: "",
-            out: textArgBytes
+            out: textArgBytes,
+            image: "puttext.png"
         },
         20: {
             name: "Type Text",
             desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0.",
             args: textArgEdit,
             value: "",
-            out: textArgBytes
+            out: textArgBytes,
+            image: "type.gif"
 
         },        
         21: {
