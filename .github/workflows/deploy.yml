@@ -24,17 +24,15 @@ jobs:
     - name: Build project
       run: npm run build  # Replace with your actual build command
 
-    
-    - name: Upload ftp
-      uses: GenieTim/ftp-action@v4.0.1
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        host: ${{ secrets.FTPES_HOST }}
-        user: ${{ secrets.FTPES_USERNAME }}
+        server: ${{ secrets.FTPES_HOST }}
+        username: ${{ secrets.FTPES_USERNAME }}
         password: ${{ secrets.FTPES_PASSWORD }}
-        localDir: "dist"
-        remoteDir: ""
-
-
+        local-dir: dist/
+        protocol: ftps
+    
 
     # - name: Upload files via FTPES with recursive directory creation and curl
     #   env:
