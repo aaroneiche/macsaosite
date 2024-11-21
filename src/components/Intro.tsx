@@ -11,10 +11,8 @@ export default function Intro() {
       </div>
       <div className="separator"></div>
 
-      <div className="window-pane" id="intro">
-        <Markdown>
-            {intro}
-        </Markdown>
+      <div className="modeless-dialog" id="intro">
+        <Markdown>{intro}</Markdown>
       </div>
     </div>
   );

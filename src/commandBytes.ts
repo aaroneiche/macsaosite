@@ -186,7 +186,7 @@ export const lookupTable: {[key:number]: lookupByte} = {
         },
         19: {
             name: "Put Text",
-            desc: "Places text characters. ASCII coded bytes - terminated by a 0. ",
+            desc: "Places text characters. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
             args: textArgEdit,
             value: "",
             out: textArgBytes,
@@ -194,7 +194,7 @@ export const lookupTable: {[key:number]: lookupByte} = {
         },
         20: {
             name: "Type Text",
-            desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0.",
+            desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
             args: textArgEdit,
             value: "",
             out: textArgBytes,

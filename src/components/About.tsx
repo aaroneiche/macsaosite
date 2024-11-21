@@ -6,12 +6,12 @@ export default function About() {
     <div className="window">
       <div className="title-bar">
         <button aria-label="Close" className="close"></button>
-        <h1 className="title">Getting Started</h1>
+        <h1 className="title">Welcome</h1>
         <button aria-label="Resize" className="resize"></button>
       </div>
       <div className="separator"></div>
 
-      <div className="window-pane" id="intro">
+      <div className="modeless-dialog" id="intro">
         <Markdown>{about}</Markdown>
       </div>
     </div>

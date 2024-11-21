@@ -56,7 +56,7 @@ function ReferenceBlock(command: number, byteInfo: lookupByte) {
             </tbody>
           </table>
           {byteInfo.image !== undefined && (
-            <img src={`public/${byteInfo.image}`} style={{ height: "100px" }} />
+            <img src={`${byteInfo.image}`} style={{ height: "100px" }} />
           )}
         </div>
       </div>
@@ -98,8 +98,8 @@ export function Reference() {
         <div id="toc">
           <table>
             <tr>
-              <th>Drawing</th>
-              <th>Control</th>
+              <th>Drawing Commands</th>
+              <th>Control Commands</th>
             </tr>
 
             <tr>

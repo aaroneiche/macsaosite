@@ -140,8 +140,12 @@ function ByteBuilder() {
               style={{ justifyContent: "flex-end" }}
             >
               {/* <button className="btn">Cancel</button> */}
-              
-              <button className="btn" onClick={copyBytesToClipboard}  style={{ width: "135px" }}>
+
+              <button
+                className="btn"
+                onClick={copyBytesToClipboard}
+                style={{ width: "135px" }}
+              >
                 Copy Bytes
               </button>
             </section>
@@ -178,7 +182,7 @@ function ByteBuilder() {
         </div>
         <div className="separator"></div>
 
-        <div className="window-pane">
+        <div className="modeless-dialog">
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}

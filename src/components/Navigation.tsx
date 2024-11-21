@@ -1,35 +1,20 @@
-import {page} from "../Layout"
+import { Link } from "react-router-dom";
 
-export default function Navigation(props: {
-    currentPage: string,
-    setPage: React.Dispatch<React.SetStateAction<page>>;
-}) {
+export default function Navigation() {
   return (
-    <div>
-      <button
-        className={props.currentPage === "about" ? "selected" : ""}
-        onClick={() => props.setPage("about")}
-      >
-        About
-      </button>
-      <button
-        className={props.currentPage === "intro" ? "selected" : ""}
-        onClick={() => props.setPage("intro")}
-      >
-        Getting Started
-      </button>
-      <button
-        className={props.currentPage === "bytebuilder" ? "selected" : ""}
-        onClick={() => props.setPage("bytebuilder")}
-      >
-        Byte Builder
-      </button>
-      <button
-        className={props.currentPage === "reference" ? "selected" : ""}
-        onClick={() => props.setPage("reference")}
-      >
-        Reference
-      </button>
-    </div>
+    <ul id="navMenu" role="menu-bar">
+      <li role="menu-item" aria-haspopup="false">
+        <Link to="/">Home</Link>
+        </li>
+      <li role="menu-item" aria-haspopup="false">
+        <Link to="/intro">Getting Started</Link>
+        </li>
+      <li role="menu-item" aria-haspopup="false">
+        <Link to="/bytebuilder">Byte Builder</Link>
+        </li>
+      <li role="menu-item" aria-haspopup="false">
+        <Link to="/reference">Reference</Link>
+        </li>
+    </ul>
   );
 }
