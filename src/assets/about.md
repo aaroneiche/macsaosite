@@ -17,6 +17,8 @@ No! While I think that would be a supercool project, it's not what I wanted to d
 #### Can I see the source code/Look at the PCB?
 Yes! The MacSAO is open source! You can find hardware and firmware at [Github](https://github.com/aaroneiche/macsao).
 
+#### How did you make this?
+Aside from acknowledgements below, you can find most the journey of making this at [the Hackaday.io project site](https://hackaday.io/project/196403-macintosh-sao).
 
 ### Acknowledgements
 This project would not have been possible without a lot of libraries, examples, tools, and feedback from a whole lot of people: 

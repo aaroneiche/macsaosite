@@ -32,27 +32,3 @@ jobs:
         password: ${{ secrets.FTPES_PASSWORD }}
         local-dir: dist/
         protocol: ftps
-    
-
-    # - name: Upload files via FTPES with recursive directory creation and curl
-    #   env:
-    #     FTPES_HOST: ${{ secrets.FTPES_HOST }}
-    #     FTPES_USERNAME: ${{ secrets.FTPES_USERNAME }}
-    #     FTPES_PASSWORD: ${{ secrets.FTPES_PASSWORD }}
-    #   run: |
-    #     find dist -type f | while read file; do
-    #         # Extract the directory part of the file path
-    #         dir=$(dirname "$file")
-            
-    #         # Convert the local directory path to the FTP path
-    #         # remote_dir="${dir}"
-    #         remote_dir="$(dirname "$file" | sed 's|^dist||')"
-    #         echo $remote_dir
-
-    #         # # Create the directory on the FTP server if it doesn't exist
-    #         curl --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD -Q "MKD $remote_dir" ftp://$FTPES_HOST
-            
-    #         # Upload the file to the correct remote directory
-    #         curl -T "$file" --ssl-reqd --user $FTPES_USERNAME:$FTPES_PASSWORD ftp://$FTPES_HOST/$remote_dir/$(basename "$file")
-    #     done
-
