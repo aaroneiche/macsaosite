@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import about from "../assets/about.md";
+import rehypeRaw from "rehype-raw";
 
 export default function About() {
   return (
@@ -12,7 +13,7 @@ export default function About() {
       <div className="separator"></div>
 
       <div className="modeless-dialog" id="intro">
-        <Markdown>{about}</Markdown>
+        <Markdown rehypePlugins={[rehypeRaw]}>{about}</Markdown>
       </div>
     </div>
   );

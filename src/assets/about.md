@@ -1,5 +1,6 @@
 ## Mac SAO (Simple Add-On)
 
+<img src="hero2.gif" align="right" width="200"/>
 The Mac SAO is a "Simple Add-on", a device you can connect to electronic conference badges that have a standard SAO port. It looks like a Mac, and acts a little bit like a Mac.
 
 #### Why did you make this?
