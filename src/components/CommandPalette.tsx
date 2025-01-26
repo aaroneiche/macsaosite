@@ -15,7 +15,7 @@ export function CommandPalette(props: {
       args: [],
     };
 
-    if (typeof lookupTable[byteIndex].args !== "function") {
+    if (Array.isArray(lookupTable[byteIndex].args)) {
       const argSet = lookupTable[byteIndex].args.map((a: string) => {
         return {
           arg: a,
@@ -25,7 +25,7 @@ export function CommandPalette(props: {
       newByte["args"] = argSet;
     } else {
       //I think this will work abstractly.
-      newByte["args"] = lookupTable[byteIndex].args; //This is a function.
+      newByte["args"] = lookupTable[byteIndex].args.builder; //This is a function.
       newByte["value"] = "";
       newByte["out"] = lookupTable[byteIndex].out;
     }
