@@ -16,13 +16,20 @@ export type byteArg = {
     val:string
 }
 
+export type complexArgs = {
+    builder: ((byteId: number, bytesData: byte[], 
+        setBytes:React.Dispatch<React.SetStateAction<byte[]>>) => React.ReactElement), // The form element that ends up in the 
+    reference: string|string[] //The React Element that ends up in the Reference page.
+}
+
+
 export type lookupByte = {
     name: string;
     desc: string;
-    args: string[]| ((byteId: number, bytesData: byte[], setBytes:React.Dispatch<React.SetStateAction<byte[]>>) => React.ReactElement);
+    args: string[]| complexArgs; //Outputs the arguments for the reference page.
     type?: byteType;
-    value?:string;
-    out?: ((val: string) => number[]);
+    value?:string;  
+    out?: ((val: string) => number[]); // The function that outputs bytes for the byte builder.
     image?: string;
 }
 
@@ -97,6 +104,7 @@ export const example: byte[] = [
     }, */
 ]
 
+//The complete list of commands bytes.
 export const lookupTable: {[key:number]: lookupByte} = {
         1: {
             name: "Desktop",
@@ -187,7 +195,7 @@ export const lookupTable: {[key:number]: lookupByte} = {
         19: {
             name: "Put Text",
             desc: "Places text characters. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
-            args: textArgEdit,
+            args: {reference: ["x","y","n ASCII bytes", "0"], builder: textArgEdit},
             value: "",
             out: textArgBytes,
             image: "puttext.png"
@@ -195,7 +203,7 @@ export const lookupTable: {[key:number]: lookupByte} = {
         20: {
             name: "Type Text",
             desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
-            args: textArgEdit,
+            args: {reference: ["x","y","n ASCII bytes", "0"], builder: textArgEdit},
             value: "",
             out: textArgBytes,
             image: "type.gif"
@@ -225,6 +233,7 @@ export const lookupTable: {[key:number]: lookupByte} = {
     };
 
 
+//The list of control bytes 
 export const controlTable: {[key: number]: lookupByte} = {
     1: {
             name: "Write to Display Stack",

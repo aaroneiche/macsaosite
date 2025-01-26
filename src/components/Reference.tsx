@@ -7,11 +7,19 @@ import "./Reference.css"
 
 function ReferenceBlock(command: number, byteInfo: lookupByte) {
     
-    const theseArgs = (typeof byteInfo.args !== 'function') ? byteInfo.args.map(a=>{return <div>{a}</div>}) : "It's complicated";
-
-
+    const theseArgs = ()=>{
+      if(Array.isArray(byteInfo.args)) {
+        return byteInfo.args.map(a=>{return <div>{a}</div>})
+      }else{
+        //If Args is a complexArgs instead of an array of vals, output args.reference.
+        if(Array.isArray(byteInfo.args.reference)){
+          return byteInfo.args.reference.map(a=>{return <div>{a}</div>})
+        }else{
+          return byteInfo.args.reference;
+        }
+      }
+    }
     // import thisImage from byteInfo.image;
-
 
     return (
       <div
@@ -43,15 +51,10 @@ function ReferenceBlock(command: number, byteInfo: lookupByte) {
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                {byteInfo.args.length > 0 && (
-                  <>
-                    <td className="argsTitle">
-                      {" "}
-                      <b>Args:</b>{" "}
-                    </td>
-                    <td> {theseArgs} </td>
-                  </>
-                )}
+                <td className="argsTitle">
+                  <b>Args: </b>
+                </td>
+                <td> {theseArgs()} </td>
               </tr>
             </tbody>
           </table>
