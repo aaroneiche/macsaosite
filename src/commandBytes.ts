@@ -53,6 +53,71 @@ const textArgBytes = (val: string) => {
     return val.split("").map(c=>c.charCodeAt(0));
 }
 
+/*
+Reverses generateBytes()'s per-tile loop/addThisByte(): takes a space-separated
+string of drawing/action command bytes (no leading control byte - just the
+tile sequence, e.g. what you'd read off the Byte Builder grid) and
+reconstructs the ordered list of command tiles. Throws with a human-readable
+message on the first byte it can't make sense of.
+*/
+export function parseByteSequence(input: string): byte[] {
+    const tokens = input.trim().split(/\s+/).filter(t => t.length !== 0);
+    const result: byte[] = [];
+    let id = 1;
+    let i = 0;
+
+    while (i < tokens.length) {
+        const commandToken = tokens[i];
+        const command = Number(commandToken);
+        const lookup = lookupTable[command];
+
+        if (!lookup) {
+            throw new Error(`Unrecognized command byte "${commandToken}" at position ${i + 1}.`);
+        }
+        i++;
+
+        const newByte: byte = {
+            id: id++,
+            command,
+            name: lookup.name,
+            args: [],
+        };
+
+        if (Array.isArray(lookup.args)) {
+            newByte.args = lookup.args.map((a) => {
+                const raw = tokens[i];
+                if (raw === undefined) {
+                    throw new Error(`"${lookup.name}" is missing a value for "${a}".`);
+                }
+                i++;
+                return { arg: a, val: raw === "?" ? "" : raw };
+            });
+        } else {
+            const codes: number[] = [];
+            while (i < tokens.length && tokens[i] !== "0") {
+                const code = Number(tokens[i]);
+                if (Number.isNaN(code)) {
+                    throw new Error(`"${lookup.name}" expected a numeric byte but found "${tokens[i]}".`);
+                }
+                codes.push(code);
+                i++;
+            }
+            if (tokens[i] !== "0") {
+                throw new Error(`"${lookup.name}" is missing its terminating 0.`);
+            }
+            i++;
+
+            newByte.args = lookup.args.builder;
+            newByte.value = codes.map(c => String.fromCharCode(c)).join("");
+            newByte.out = lookup.out;
+        }
+
+        result.push(newByte);
+    }
+
+    return result;
+}
+
 
 export const example: byte[] = [
     
@@ -60,7 +125,7 @@ export const example: byte[] = [
         id: 1,
         command: 1,
         name: "Desktop",
-        args: [], 
+        args: [{arg:'disk',val:"1"},], 
     },
     {
         id: 2,
@@ -139,6 +204,12 @@ export const lookupTable: {[key:number]: lookupByte} = {
             args: ['Selected Menu','Selected Item'],
             image: "menu.png"
         },
+        7: {
+            name: "Draw Icon",
+            desc: "Draws an icon",
+            args: ['x','y','Icon','State'],
+            image: "menu.png"
+        },
         9: {
             name: "Draw Pixel",
             desc: "Draw a Pixel at x,y coordinates, with color",
@@ -169,18 +240,17 @@ export const lookupTable: {[key:number]: lookupByte} = {
             image: "rect.png"
         },
         14: {
+            name: "Draw Circle",
+            desc: "Draw a Circle with color (not filled)",
+            args: ['x','y','radius', 'color'],
+            image: "circle.png"
+        },        
+        15: {
             name: "Draw Filled Circle",
             desc: "Draw a filled Circle with color",
             args: ['x','y','radius', 'color'],
             image: "fillCircle.png"
         },
-        15: {
-            name: "Draw Circle",
-            desc: "Draw a Circle with color (not filled)",
-            args: ['x','y','radius', 'color'],
-            image: "circle.png"
-        },
-
 
         16: {
             name: "Move Mouse",
@@ -191,6 +261,11 @@ export const lookupTable: {[key:number]: lookupByte} = {
             name: "Buffer Pixel",
             desc: "Draws a pixel in the MacPaint Buffer",
             args: ['x','y','c'],
+        },
+        18: {
+            name: "Wait after action",
+            desc: "Pauses after an action for n * 100 ms",
+            args: ['n'],
         },
         19: {
             name: "Put Text",
@@ -220,6 +295,17 @@ export const lookupTable: {[key:number]: lookupByte} = {
             desc: "Moves the mouse to a menu, and then to an Item. Menu gets appropriately highlighted.",
             args: ["Menu","Menu Item"],
         },
+        23: {
+            name: "Buffer Circle",
+            desc: "Draws a circle to the buffer (MacPaint)",
+            args: ["x","y","r","c"],
+        },
+        24: {
+            name: "Buffer Filled Circle",
+            desc: "Draws a filled circle to the buffer (MacPaint)",
+            args: ["x","y","r","c"],
+        },
+
         254: {
             name: "BG End",
             desc: "The end of a background block. ",

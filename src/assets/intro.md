@@ -14,6 +14,12 @@ The **command** (most often for drawing to the screen) tells the Mac what to dis
 
 The **arguments** provide additional data that the command uses to draw. Some commands take only one argument (or none at all). Others take several arguments, and sometimes an unknown number. 
 
+### Firmware Versions
+As of July 30, 2026 there are now multiple versions of the MacSAO firmware out in the wild!
+
+If something is not working, it might have been fixed in a newer version of the firmware. If it hasn't been fixed, maybe I can fix it! Send me a note and I'll take a look. I've tried my best to clarify throughout the documentation where items have changed. If there's no note, you can assume that the feature works in v1.0.
+
+
 ### MacSAO Modes
 
 There are two primary modes of operation for the MacSAO: *Animation*, and *Live-Drive*. 
@@ -94,7 +100,7 @@ This example shows how to send a short sequence to the first possible address (s
     255  // END of Sequence.
 ```
 
-If your sequence was too large to send in a single command, you could write a second command to write additional sequence data. Alternatively you can store multiple sequences in the EEPROM and load difference sequences at will.
+If your sequence was too large to send in a single command, you could write a second command to write additional sequence data. Alternatively you can store multiple sequences in the EEPROM and load difference sequences at will. Generally, you can send about 25 bytes before it causes hiccups. Tie up loose animations (close with `255 255`) while you build the rest of the sequence and you should not have problems.
 
 In order to use these stored sequences, you must tell the MacSAO where to find your sequence. This is done by setting the 2nd, 3rd, and 4th bytes of the preferences. In the preferences, bytes 2 and 3 are the 16-bit EEPROM address for where your sequence begins.
 The 4th byte is the length of your sequence.
@@ -107,6 +113,8 @@ If you were using the example sequence above, you would send the following comma
     16   // Address low byte
     12   // Length the sequence
 ```
+
+Again, sending bytes in smaller clumps is more likely to be successful. You can write to any point on the EEPROM, so send your sequences in small sets of bytes and keep track of the next address. The Byte Builder on this site can help.
 
 ## LiveDrive mode
 
