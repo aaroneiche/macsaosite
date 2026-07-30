@@ -31,6 +31,7 @@ export type lookupByte = {
     value?:string;  
     out?: ((val: string) => number[]); // The function that outputs bytes for the byte builder.
     image?: string;
+    version?:string;
 }
 
 
@@ -299,11 +300,13 @@ export const lookupTable: {[key:number]: lookupByte} = {
             name: "Buffer Circle",
             desc: "Draws a circle to the buffer (MacPaint)",
             args: ["x","y","r","c"],
+            version:"1.1"
         },
         24: {
             name: "Buffer Filled Circle",
             desc: "Draws a filled circle to the buffer (MacPaint)",
             args: ["x","y","r","c"],
+            version:"1.1"            
         },
 
         254: {

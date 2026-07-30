@@ -61,6 +61,10 @@ function ReferenceBlock(command: number, byteInfo: lookupByte) {
           {byteInfo.image !== undefined && (
             <img src={`${byteInfo.image}`} style={{ height: "100px" }} />
           )}
+          {byteInfo.version !== undefined && (
+            <div className="version">{byteInfo.version}</div>
+          )}
+
         </div>
       </div>
     );

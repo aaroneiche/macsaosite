@@ -1,3 +1,7 @@
+.window {
+    position: relative;
+}
+
 .window th, .window td {
     text-align: left;
     padding: 0px;
@@ -25,4 +29,14 @@
 #toc table td,th {
     padding: 10px;
     vertical-align: top;
+}
+
+.version {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.version::before {
+    content:"v";
 }
