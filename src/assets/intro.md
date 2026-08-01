@@ -19,6 +19,8 @@ As of July 30, 2026 there are now multiple versions of the MacSAO firmware out i
 
 If something is not working, it might have been fixed in a newer version of the firmware. If it hasn't been fixed, maybe I can fix it! Send me a note and I'll take a look. I've tried my best to clarify throughout the documentation where items have changed. If there's no note, you can assume that the feature works in v1.0.
 
+You can find which version of the firmware you have by going to the settings screen (hold down the button for 3s). The version is in the lower left corner. If there is no version, you are running v1.0.
+
 
 ### MacSAO Modes
 

@@ -327,7 +327,7 @@ export const controlTable: {[key: number]: lookupByte} = {
     1: {
             name: "Write to Display Stack",
             desc: "Writes the provided bytes to the display stack and starts playback from beginning. The display stack has a maximum length of 255",
-            args: ['Position Offset'],
+            args: ["Address High","Address Low"],
             type: "control",
         },
     2: {
@@ -351,7 +351,7 @@ export const controlTable: {[key: number]: lookupByte} = {
     5: {
             name: "Set a variable",
             desc: "Sets a variable value. 1: Mode (0 is animation, 1 is live drive). 2: Mouse Coordinates (X and Y) ",
-            args: [],
+            args: ["Variable","value(s)"],
             type: "control",
         },        
     6: {
