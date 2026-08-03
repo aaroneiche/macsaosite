@@ -15,14 +15,17 @@ The **command** (most often for drawing to the screen) tells the Mac what to dis
 The **arguments** provide additional data that the command uses to draw. Some commands take only one argument (or none at all). Others take several arguments, and sometimes an unknown number. 
 
 ### Firmware Versions
-As of July 30, 2026 there are now multiple versions of the MacSAO firmware out in the wild!
+As of July, 2026 there are now multiple versions of the MacSAO firmware out in the wild!
 
-If something is not working, it might have been fixed in a newer version of the firmware. If it hasn't been fixed, maybe I can fix it! Send me a note and I'll take a look. I've tried my best to clarify throughout the documentation where items have changed. If there's no note, you can assume that the feature works in v1.0.
+If something is not working, it might have been fixed in a newer version of the firmware. If it hasn't been fixed, maybe I can fix it! Send me a note (macsao@aaroneiche.com) and I'll take a look. I've tried my best to make the firmware work, and to clarify throughout the documentation where items have changed. If there's no note, you can assume that the feature works in v1.0.
 
 You can find which version of the firmware you have by going to the settings screen (hold down the button for 3s). The version is in the lower left corner. If there is no version, you are running v1.0.
 
+### Updating the firmware
+The firmware on the MacSAO can be updated with a few wires and a Raspberry Pi Pico (or other RP2040 device). It is not complicated, but I'm still working on writing up the steps. A version of those instructions can be found in the [Hackaday Supercon 2024 Badget Repo](https://github.com/Hack-a-Day/2024-Supercon-8-Add-On-Badge/tree/main/i2c_proto_petal_tutorial). 
 
-### MacSAO Modes
+
+# MacSAO Modes
 
 There are two primary modes of operation for the MacSAO: *Animation*, and *Live-Drive*. 
 The Animation mode is intended largely as a passive-mode, something for the Mac to Display for fun. 
