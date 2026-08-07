@@ -14,10 +14,7 @@
     "@dnd-kit/sortable": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.28.0",
-    "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.0",
     "vike": "^0.4.199"
   },
   "devDependencies": {
@@ -29,8 +26,14 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
+    "unified": "^11.0.5",
     "vite": "^5.4.8"
   }
 }

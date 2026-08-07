@@ -158,16 +158,6 @@ export const example: byte[] = [
         name: "Action End",
         args: []
     },
-    /*     
-    {
-        id: 6,
-        command: 19,
-        name: "Put Text",
-        args: textArgEdit,
-        value: "",
-        out: textArgBytes,
-
-    }, */
 ]
 
 //The complete list of commands bytes.

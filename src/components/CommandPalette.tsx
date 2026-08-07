@@ -35,7 +35,7 @@ export function CommandPalette(props: {
 
   const newByteButtons = Object.keys(lookupTable).map((op) => {
     return (
-      <button onClick={() => addThisByte(Number(op))}>
+      <button className="btn" onClick={() => addThisByte(Number(op))}>
         {lookupTable[Number(op)].name}
       </button>
     );

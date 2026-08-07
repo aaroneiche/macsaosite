@@ -1,4 +1,3 @@
-import Markdown from "react-markdown";
 import intro from "../assets/intro.md"
 
 export default function Intro() {
@@ -11,9 +10,7 @@ export default function Intro() {
       </div>
       <div className="separator"></div>
 
-      <div className="modeless-dialog" id="intro">
-        <Markdown>{intro}</Markdown>
-      </div>
+      <div className="modeless-dialog" id="intro" dangerouslySetInnerHTML={{ __html: intro }} />
     </div>
   );
 }
