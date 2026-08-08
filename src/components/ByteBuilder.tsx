@@ -85,7 +85,7 @@ function ByteBuilder() {
 
   
   const copyBytesToClipboard = () => {
-    navigator.clipboard.writeText(bytesToSend.join(" "));
+    navigator.clipboard.writeText(bytesToSend.join(commas?',':' '));
   }
 
   useEffect(()=>{
@@ -124,7 +124,7 @@ function ByteBuilder() {
               
               <div className="field-row">
 
-              <label for="startingAddress" style={{"fontSize":"1.3em"}}>Starting Address: 0x</label><br/>
+              <label htmlFor="startingAddress" style={{"fontSize":"1.3em"}}>Starting Address: 0x</label><br/>
               <input name="startingAddress" id="startingAddress" type="text" placeholder="0010" size={4}
                 onChange={(e) => {setAddressInput(e.target.value);}}
                 value={addressInput}
@@ -132,7 +132,7 @@ function ByteBuilder() {
               </div>
               <div className="field-row">
                 <input id="commas" type="checkbox" name="commas" checked={commas} onClick={()=>{setCommas(!commas)}}/>
-                <label for="commas" style={{"fontSize":"1.3em"}}>Commas</label>
+                <label htmlFor="commas" style={{"fontSize":"1.3em"}}>Commas</label>
               </div>
                 
             </form>
