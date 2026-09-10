@@ -301,13 +301,13 @@ export const lookupTable: {[key:number]: lookupByte} = {
         23: {
             name: "Buffer Circle",
             desc: "Draws a circle to the buffer (MacPaint)",
-            args: ["x","y","r","c"],
+            args: ["x","y","radius","color"],
             version:"1.1"
         },
         24: {
             name: "Buffer Filled Circle",
             desc: "Draws a filled circle to the buffer (MacPaint)",
-            args: ["x","y","r","c"],
+            args: ["x","y","radius","color"],
             version:"1.1"            
         },
 
