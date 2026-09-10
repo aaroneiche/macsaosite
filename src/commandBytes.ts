@@ -34,8 +34,20 @@ export type lookupByte = {
     version?:string;
 }
 
-
 const textArgEdit = (byteId: number, bytesData: byte[], setBytes:React.Dispatch<React.SetStateAction<byte[]>>)=>{ 
+    /* 
+            <div className={"argPair"}>
+          <label htmlFor="">{a.arg}</label>
+          <input
+            type="text"
+            // size={2}
+            value={a.val}
+            onChange={(e) => {
+              updateArg(props.id, a.arg, e.target.value);
+            }}
+          />
+        </div> */
+
     const updateArea = (event: React.ChangeEvent<HTMLTextAreaElement>) =>{
         const newBytesData = [...bytesData];
         const thisByte = newBytesData.find((k) => k.id == byteId);
@@ -260,16 +272,16 @@ export const lookupTable: {[key:number]: lookupByte} = {
         },
         19: {
             name: "Put Text",
-            desc: "Places text characters. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
-            args: {reference: ["x","y","n ASCII bytes", "0"], builder: textArgEdit},
+            desc: "Places text characters. ASCII coded bytes terminated by a 0. Requires X and Y start position",
+            args: {reference: ["x","y","n ASCII bytes + 0"], builder: textArgEdit},
             value: "",
             out: textArgBytes,
             image: "puttext.png"
         },
         20: {
             name: "Type Text",
-            desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes - terminated by a 0. Requires X and Y start position",
-            args: {reference: ["x","y","n ASCII bytes", "0"], builder: textArgEdit},
+            desc: "Types text characters out at a rate of 0.1s. ASCII coded bytes terminated by a 0. Requires X and Y start position",
+            args: {reference: ["x","y","n ASCII bytes + 0"], builder: textArgEdit},
             value: "",
             out: textArgBytes,
             image: "type.gif"
