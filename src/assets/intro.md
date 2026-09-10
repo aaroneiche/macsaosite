@@ -4,7 +4,8 @@ The MacSAO uses data in an array of bytes to draw images on its display. The arr
 
 
 ## Communicating with the MacSAO
-The MacSAO's primary interface is a standard two-wire I2C. The default address is **10** (0x0A) for writing (*11* for reading). Two alternative addresses are available: **34** (0x22) and **86** (0x56). To change the I2C address, press and hold down the button on the bottom of the MacSAO for approximately 3 seconds. The display will change to a setting screen where you can select the desired address. Pressing the button will step through the options. When you've selected your preference, press and hold the button again for 3 seconds and it will save that value and return you to the previous mode. 
+The MacSAO's primary interface is a standard two-wire I2C. The default address is **10** (0x0A) for writing (*11* for reading). Two alternative addresses are available: **34** (0x22) and **86** (0x56). To change the I2C address, press and hold down the button on the bottom of the MacSAO for approximately 3 seconds. The display will change to a setting screen where you can select the desired address. Pressing the button will step through the options. When you've selected your preference, press and hold the button again for 3 seconds and it will save that value and return you to the previous mode. (This will also cycle through the EEPROM self test and the EEPROM read sequence info)
+
 
 Messages are sent to the SAO typically with 3 parts: A **control byte**, a (drawing) **command**, and **arguments** for that command. 
 

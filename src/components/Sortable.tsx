@@ -86,7 +86,7 @@ export function SortableItem(props: SortableItemProps ) {
       </div>
       {formArgs}
       <div className="byteFooter">
-        <button>?</button>
+        {/* <button>?</button> */}
         <button
           onClick={() => {
             // console.log("yes?");
