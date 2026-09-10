@@ -15,6 +15,9 @@ I'm so glad you asked! Take a look at the "Getting Started" section of this site
 #### So it's not an emulator?
 No! While I think that would be a supercool project, it's not what I wanted to do. If you're interested in something like that, you should take a look at Marc Evan's [Pico-Mac](https://github.com/evansm7/pico-mac). If I was working with a larger space, and a display that could draw 512x342, I think I would have given it a shot.
 
+#### Can I buy one?
+Yes! I sell them on [my storefront on Uberflux](https://uberflux.com/product/CR-MacSAO). Additionally [my friend Andy carries them}(https://www.core64.io/buy/p/macsao-dc-battery) at his shop and sells them he goes to Vintage Computer Faires
+
 #### Can I see the source code/Look at the PCB?
 Yes! The MacSAO is open source! You can find hardware and firmware at [Github](https://github.com/aaroneiche/macsao).
 
